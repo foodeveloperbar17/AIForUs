@@ -1,11 +1,14 @@
-package ge.aigeorgia.aiforus
+package ge.aigeorgia.aiforus.activities
 
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import ge.aigeorgia.aiforus.R
+import ge.aigeorgia.aiforus.presenters.MainActivityPresenter
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     private var searchButton: Button? = null
     private var submitButton: Button? = null
     private var skipButton: Button? = null
+
+    private val mainActivityPresenter = MainActivityPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +39,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUIActions(){
-        //////////////////////////////////////
+        searchButton?.setOnClickListener(View.OnClickListener {
+            var query = searchEditText.text.toString()
+            /////////// search with query
+        })
+
+        skipButton?.setOnClickListener(View.OnClickListener {
+          mainActivityPresenter.nextImage()
+        })
     }
 
     fun showImage(bitmap: Bitmap) {
@@ -44,6 +56,5 @@ class MainActivity : AppCompatActivity() {
     fun showEmptyImage() {
         mainImage?.setImageResource(R.drawable.ic_launcher_background)
     }
-
 
 }
