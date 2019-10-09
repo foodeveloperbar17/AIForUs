@@ -39,14 +39,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUIActions(){
-        searchButton?.setOnClickListener(View.OnClickListener {
-            var query = searchEditText.text.toString()
+        searchButton?.setOnClickListener {
+            var query = searchEditText?.text.toString()
             /////////// search with query
-        })
+        }
 
-        skipButton?.setOnClickListener(View.OnClickListener {
-          mainActivityPresenter.nextImage()
-        })
+        skipButton?.setOnClickListener {
+            mainActivityPresenter.nextImage()
+        }
     }
 
     fun showImage(bitmap: Bitmap) {
